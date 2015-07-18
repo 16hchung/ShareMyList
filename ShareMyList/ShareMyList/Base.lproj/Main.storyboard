@@ -17,8 +17,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Add an item" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ujl-yw-f4N">
-                                <rect key="frame" x="16" y="28" width="568" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="New List Item" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ujl-yw-f4N">
+                                <rect key="frame" x="16" y="28" width="530" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -63,17 +63,34 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cTn-24-TKl">
+                                <rect key="frame" x="554" y="28" width="30" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="yG9-xB-QqK"/>
+                                </constraints>
+                                <state key="normal" title="Add">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Ujl-yw-f4N" firstAttribute="top" secondItem="LQC-hI-0Dl" secondAttribute="bottom" constant="8" id="EMf-Kk-61g"/>
                             <constraint firstAttribute="trailingMargin" secondItem="3f6-wf-SFC" secondAttribute="trailing" constant="-16" id="K7a-j5-C76"/>
                             <constraint firstItem="3f6-wf-SFC" firstAttribute="top" secondItem="Ujl-yw-f4N" secondAttribute="bottom" constant="8" id="P9N-HS-SbK"/>
+                            <constraint firstItem="cTn-24-TKl" firstAttribute="centerY" secondItem="Ujl-yw-f4N" secondAttribute="centerY" id="UNi-mG-mMY"/>
                             <constraint firstItem="3f6-wf-SFC" firstAttribute="leading" secondItem="Xrq-nU-wqO" secondAttribute="leadingMargin" constant="-16" id="VlS-hB-kVn"/>
+                            <constraint firstItem="cTn-24-TKl" firstAttribute="trailing" secondItem="Xrq-nU-wqO" secondAttribute="trailingMargin" id="aIM-ho-PL7"/>
                             <constraint firstItem="Ujl-yw-f4N" firstAttribute="trailing" secondItem="Xrq-nU-wqO" secondAttribute="trailingMargin" id="dVq-BB-6yj"/>
                             <constraint firstItem="Ujl-yw-f4N" firstAttribute="leading" secondItem="Xrq-nU-wqO" secondAttribute="leadingMargin" id="exi-og-FIs"/>
                             <constraint firstItem="hTM-oy-fE3" firstAttribute="top" secondItem="3f6-wf-SFC" secondAttribute="bottom" id="fve-ji-zf9"/>
+                            <constraint firstItem="cTn-24-TKl" firstAttribute="leading" secondItem="Ujl-yw-f4N" secondAttribute="trailing" constant="8" id="j9I-ml-HdD"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="dVq-BB-6yj"/>
+                            </mask>
+                        </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="My List" id="fkL-Cq-on1"/>
                 </viewController>
