@@ -10,10 +10,9 @@ import UIKit
 
 class ListItemTableViewCell: UITableViewCell {
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
+    @IBOutlet weak var listItemLabel: UILabel!
+    @IBOutlet weak var checkBoxButton: UIButton!
+    
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

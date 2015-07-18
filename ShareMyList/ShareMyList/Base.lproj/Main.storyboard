@@ -22,11 +22,11 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="55" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="3f6-wf-SFC">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="88" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="3f6-wf-SFC">
                                 <rect key="frame" x="0.0" y="66" width="600" height="485"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="List Cell" rowHeight="55" id="i1y-Tx-exn" customClass="ListItemTableViewCell" customModule="ShareMyList" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="List Cell" rowHeight="88" id="i1y-Tx-exn" customClass="ListItemTableViewCell" customModule="ShareMyList" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="i1y-Tx-exn" id="s4G-mT-xXr">
@@ -45,21 +45,38 @@
                                                     <state key="selected" image="checked box"/>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="List Item" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nDO-up-BUM">
-                                                    <rect key="frame" x="48" y="16" width="544" height="22"/>
+                                                    <rect key="frame" x="48" y="16" width="544" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Buyer" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ApF-5d-RG1">
+                                                    <rect key="frame" x="531" y="45" width="45" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.25098040700000002" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="wKc-Ck-S50" firstAttribute="leading" secondItem="s4G-mT-xXr" secondAttribute="leadingMargin" id="D85-Nh-pDh"/>
+                                                <constraint firstItem="ApF-5d-RG1" firstAttribute="top" secondItem="nDO-up-BUM" secondAttribute="bottom" constant="8" id="ESE-ki-4wk"/>
                                                 <constraint firstItem="nDO-up-BUM" firstAttribute="top" secondItem="s4G-mT-xXr" secondAttribute="top" constant="16" id="Nxi-Ok-RfX"/>
                                                 <constraint firstAttribute="centerY" secondItem="wKc-Ck-S50" secondAttribute="centerY" constant="0.5" id="VwW-U2-Ie8"/>
                                                 <constraint firstItem="nDO-up-BUM" firstAttribute="centerY" secondItem="wKc-Ck-S50" secondAttribute="centerY" id="fhL-kN-WPX"/>
                                                 <constraint firstItem="nDO-up-BUM" firstAttribute="leading" secondItem="wKc-Ck-S50" secondAttribute="trailing" constant="8" id="hvL-Cs-OL1"/>
                                                 <constraint firstItem="nDO-up-BUM" firstAttribute="trailing" secondItem="s4G-mT-xXr" secondAttribute="trailingMargin" id="pGf-uA-aWo"/>
+                                                <constraint firstItem="ApF-5d-RG1" firstAttribute="trailing" secondItem="s4G-mT-xXr" secondAttribute="trailingMargin" constant="-16" id="wxe-k8-AfO"/>
                                             </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="VwW-U2-Ie8"/>
+                                                </mask>
+                                            </variation>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="checkBoxButton" destination="wKc-Ck-S50" id="fk6-nJ-UYw"/>
+                                            <outlet property="listItemLabel" destination="nDO-up-BUM" id="Qnu-pz-FzZ"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -93,6 +110,10 @@
                         </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="My List" id="fkL-Cq-on1"/>
+                    <connections>
+                        <outlet property="addListItemButton" destination="cTn-24-TKl" id="8gI-Wd-dYL"/>
+                        <outlet property="addListItemTextField" destination="Ujl-yw-f4N" id="XyR-2h-dSo"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tHj-LN-sRn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
