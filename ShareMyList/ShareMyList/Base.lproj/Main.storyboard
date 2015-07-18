@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="a5J-kP-sOP">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -8,7 +8,7 @@
         <!--My List-->
         <scene sceneID="0oJ-pF-Z0D">
             <objects>
-                <viewController id="HDd-Rj-7AF" sceneMemberID="viewController">
+                <viewController id="HDd-Rj-7AF" customClass="ListViewController" customModule="ShareMyList" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="LQC-hI-0Dl"/>
                         <viewControllerLayoutGuide type="bottom" id="hTM-oy-fE3"/>
@@ -22,24 +22,43 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="3f6-wf-SFC">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="55" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="3f6-wf-SFC">
                                 <rect key="frame" x="0.0" y="66" width="600" height="485"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="60" id="i1y-Tx-exn">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="List Cell" rowHeight="55" id="i1y-Tx-exn" customClass="ListItemTableViewCell" customModule="ShareMyList" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="i1y-Tx-exn" id="s4G-mT-xXr">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wKc-Ck-S50">
-                                                    <rect key="frame" x="8" y="15" width="28" height="28"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wKc-Ck-S50">
+                                                    <rect key="frame" x="8" y="11" width="32" height="32"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="32" id="0RS-9r-dfD"/>
+                                                        <constraint firstAttribute="height" constant="32" id="A12-fX-JHz"/>
+                                                    </constraints>
+                                                    <inset key="contentEdgeInsets" minX="8" minY="8" maxX="8" maxY="8"/>
                                                     <state key="normal" image="unchecked box">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <state key="selected" image="checked box"/>
                                                 </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="List Item" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nDO-up-BUM">
+                                                    <rect key="frame" x="48" y="16" width="544" height="22"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="wKc-Ck-S50" firstAttribute="leading" secondItem="s4G-mT-xXr" secondAttribute="leadingMargin" id="D85-Nh-pDh"/>
+                                                <constraint firstItem="nDO-up-BUM" firstAttribute="top" secondItem="s4G-mT-xXr" secondAttribute="top" constant="16" id="Nxi-Ok-RfX"/>
+                                                <constraint firstAttribute="centerY" secondItem="wKc-Ck-S50" secondAttribute="centerY" constant="0.5" id="VwW-U2-Ie8"/>
+                                                <constraint firstItem="nDO-up-BUM" firstAttribute="centerY" secondItem="wKc-Ck-S50" secondAttribute="centerY" id="fhL-kN-WPX"/>
+                                                <constraint firstItem="nDO-up-BUM" firstAttribute="leading" secondItem="wKc-Ck-S50" secondAttribute="trailing" constant="8" id="hvL-Cs-OL1"/>
+                                                <constraint firstItem="nDO-up-BUM" firstAttribute="trailing" secondItem="s4G-mT-xXr" secondAttribute="trailingMargin" id="pGf-uA-aWo"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
@@ -65,7 +84,7 @@
         <!--Friends-->
         <scene sceneID="PHZ-tg-zV6">
             <objects>
-                <viewController id="cta-ba-FD0" sceneMemberID="viewController">
+                <viewController id="cta-ba-FD0" customClass="FriendViewController" customModule="ShareMyList" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="51l-0o-Loy"/>
                         <viewControllerLayoutGuide type="bottom" id="cYP-J6-2ye"/>
@@ -78,15 +97,40 @@
                                 <rect key="frame" x="0.0" y="28" width="600" height="44"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="T1N-Id-SCu">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="57" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="T1N-Id-SCu">
                                 <rect key="frame" x="0.0" y="72" width="600" height="479"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="8bP-24-fPW">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Friend Cell" rowHeight="57" id="8bP-24-fPW" customClass="FriendTableViewCell" customModule="ShareMyList" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8bP-24-fPW" id="hXd-yk-U5b">
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Friend" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ann-4m-6cG">
+                                                    <rect key="frame" x="18" y="16" width="518" height="24"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7ly-4d-HhU">
+                                                    <rect key="frame" x="546" y="14" width="46" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="46" id="Peh-GQ-IOZ"/>
+                                                    </constraints>
+                                                    <state key="normal" title="Button">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="7ly-4d-HhU" firstAttribute="leading" secondItem="ann-4m-6cG" secondAttribute="trailing" constant="10" id="BY2-xj-az4"/>
+                                                <constraint firstAttribute="centerY" secondItem="7ly-4d-HhU" secondAttribute="centerY" constant="-0.5" id="FnW-CN-sP8"/>
+                                                <constraint firstItem="7ly-4d-HhU" firstAttribute="trailing" secondItem="hXd-yk-U5b" secondAttribute="trailingMargin" id="LHq-sG-0V8"/>
+                                                <constraint firstItem="ann-4m-6cG" firstAttribute="leading" secondItem="hXd-yk-U5b" secondAttribute="leadingMargin" constant="10" id="Xep-XO-chX"/>
+                                                <constraint firstItem="ann-4m-6cG" firstAttribute="top" secondItem="hXd-yk-U5b" secondAttribute="top" constant="16" id="dA3-CM-vvf"/>
+                                                <constraint firstItem="ann-4m-6cG" firstAttribute="centerY" secondItem="7ly-4d-HhU" secondAttribute="centerY" constant="-0.5" id="vdG-Ts-5ER"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
