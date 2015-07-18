@@ -67,6 +67,7 @@
                                                 <constraint firstItem="nDO-up-BUM" firstAttribute="leading" secondItem="wKc-Ck-S50" secondAttribute="trailing" constant="8" id="hvL-Cs-OL1"/>
                                                 <constraint firstItem="nDO-up-BUM" firstAttribute="trailing" secondItem="s4G-mT-xXr" secondAttribute="trailingMargin" id="pGf-uA-aWo"/>
                                                 <constraint firstItem="ApF-5d-RG1" firstAttribute="trailing" secondItem="s4G-mT-xXr" secondAttribute="trailingMargin" constant="-16" id="wxe-k8-AfO"/>
+                                                <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="nDO-up-BUM" secondAttribute="bottom" constant="16" id="xET-eu-pxP"/>
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="constraints">
