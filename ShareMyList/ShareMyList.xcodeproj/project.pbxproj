@@ -12,6 +12,11 @@
 		8D95C5E01B5B0156007B02D5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8D95C5DF1B5B0156007B02D5 /* Images.xcassets */; };
 		8D95C5E31B5B0156007B02D5 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D95C5E11B5B0156007B02D5 /* LaunchScreen.xib */; };
 		8D95C5EF1B5B0156007B02D5 /* ShareMyListTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D95C5EE1B5B0156007B02D5 /* ShareMyListTests.swift */; };
+		A67A63401B5B0EA8007B90BA /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67A633F1B5B0EA8007B90BA /* Item.swift */; };
+		A67A63431B5B0ECB007B90BA /* FriendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67A63421B5B0ECB007B90BA /* FriendTableViewCell.swift */; };
+		A67A63451B5B0EF6007B90BA /* ListItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67A63441B5B0EF6007B90BA /* ListItemTableViewCell.swift */; };
+		A67A63481B5B0F5A007B90BA /* ListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67A63471B5B0F5A007B90BA /* ListViewController.swift */; };
+		A67A634A1B5B0F6A007B90BA /* FriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A67A63491B5B0F6A007B90BA /* FriendViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +39,11 @@
 		8D95C5E81B5B0156007B02D5 /* ShareMyListTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ShareMyListTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D95C5ED1B5B0156007B02D5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8D95C5EE1B5B0156007B02D5 /* ShareMyListTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareMyListTests.swift; sourceTree = "<group>"; };
+		A67A633F1B5B0EA8007B90BA /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		A67A63421B5B0ECB007B90BA /* FriendTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendTableViewCell.swift; sourceTree = "<group>"; };
+		A67A63441B5B0EF6007B90BA /* ListItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListItemTableViewCell.swift; sourceTree = "<group>"; };
+		A67A63471B5B0F5A007B90BA /* ListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListViewController.swift; sourceTree = "<group>"; };
+		A67A63491B5B0F6A007B90BA /* FriendViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +85,9 @@
 		8D95C5D51B5B0156007B02D5 /* ShareMyList */ = {
 			isa = PBXGroup;
 			children = (
+				A67A63461B5B0F38007B90BA /* View Controllers */,
+				A67A63411B5B0EB2007B90BA /* Views */,
+				A67A633E1B5B0EA8007B90BA /* Models */,
 				8D95C5D81B5B0156007B02D5 /* AppDelegate.swift */,
 				8D95C5DC1B5B0156007B02D5 /* Main.storyboard */,
 				8D95C5DF1B5B0156007B02D5 /* Images.xcassets */,
@@ -107,6 +120,32 @@
 				8D95C5ED1B5B0156007B02D5 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A67A633E1B5B0EA8007B90BA /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A67A633F1B5B0EA8007B90BA /* Item.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		A67A63411B5B0EB2007B90BA /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A67A63421B5B0ECB007B90BA /* FriendTableViewCell.swift */,
+				A67A63441B5B0EF6007B90BA /* ListItemTableViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		A67A63461B5B0F38007B90BA /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				A67A63471B5B0F5A007B90BA /* ListViewController.swift */,
+				A67A63491B5B0F6A007B90BA /* FriendViewController.swift */,
+			);
+			path = "View Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -209,6 +248,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A67A634A1B5B0F6A007B90BA /* FriendViewController.swift in Sources */,
+				A67A63451B5B0EF6007B90BA /* ListItemTableViewCell.swift in Sources */,
+				A67A63431B5B0ECB007B90BA /* FriendTableViewCell.swift in Sources */,
+				A67A63401B5B0EA8007B90BA /* Item.swift in Sources */,
+				A67A63481B5B0F5A007B90BA /* ListViewController.swift in Sources */,
 				8D95C5D91B5B0156007B02D5 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -407,6 +451,7 @@
 				8D95C5F41B5B0156007B02D5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		8D95C5F51B5B0156007B02D5 /* Build configuration list for PBXNativeTarget "ShareMyListTests" */ = {
 			isa = XCConfigurationList;
@@ -415,6 +460,7 @@
 				8D95C5F71B5B0156007B02D5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
