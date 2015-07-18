@@ -34,3 +34,23 @@ class FriendViewController: UIViewController {
     */
 
 }
+
+extension FriendViewController: UITableViewDataSource {
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("Friend Cell", forIndexPath: indexPath) as! FriendTableViewCell
+        
+        return cell
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // TODO: return actual number
+        return 0
+    }
+}
+
+extension FriendViewController: UITableViewDelegate {
+    
+    
+    
+}

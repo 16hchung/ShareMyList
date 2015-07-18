@@ -13,6 +13,8 @@ class ListViewController: UIViewController {
     @IBOutlet weak var addListItemTextField: UITextField!
     @IBOutlet weak var addListItemButton: UIButton!
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -29,4 +31,24 @@ class ListViewController: UIViewController {
     }
     */
 
+}
+
+extension ListViewController: UITableViewDataSource {
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("List Cell", forIndexPath: indexPath) as! ListItemTableViewCell
+        
+        return cell
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // TODO: return actual number
+        return 0
+    }
+}
+
+extension ListViewController: UITableViewDelegate {
+    
+    
+    
 }
