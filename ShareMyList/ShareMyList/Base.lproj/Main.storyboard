@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="a5J-kP-sOP">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -146,23 +147,26 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Friend" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ann-4m-6cG">
-                                                    <rect key="frame" x="18" y="16" width="518" height="24"/>
+                                                    <rect key="frame" x="18" y="16" width="522" height="26"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7ly-4d-HhU">
-                                                    <rect key="frame" x="546" y="14" width="46" height="30"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7ly-4d-HhU">
+                                                    <rect key="frame" x="546" y="6" width="46" height="46"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="46" id="Peh-GQ-IOZ"/>
+                                                        <constraint firstAttribute="width" secondItem="7ly-4d-HhU" secondAttribute="height" multiplier="1:1" id="pPc-qY-bTu"/>
                                                     </constraints>
-                                                    <state key="normal" title="Button">
+                                                    <inset key="contentEdgeInsets" minX="7" minY="7" maxX="7" maxY="7"/>
+                                                    <state key="normal" image="add">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
+                                                    <state key="selected" image="check"/>
                                                 </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="7ly-4d-HhU" firstAttribute="leading" secondItem="ann-4m-6cG" secondAttribute="trailing" constant="10" id="BY2-xj-az4"/>
+                                                <constraint firstItem="7ly-4d-HhU" firstAttribute="leading" secondItem="ann-4m-6cG" secondAttribute="trailing" constant="6" id="BY2-xj-az4"/>
                                                 <constraint firstAttribute="centerY" secondItem="7ly-4d-HhU" secondAttribute="centerY" constant="-0.5" id="FnW-CN-sP8"/>
                                                 <constraint firstItem="7ly-4d-HhU" firstAttribute="trailing" secondItem="hXd-yk-U5b" secondAttribute="trailingMargin" id="LHq-sG-0V8"/>
                                                 <constraint firstItem="ann-4m-6cG" firstAttribute="leading" secondItem="hXd-yk-U5b" secondAttribute="leadingMargin" constant="10" id="Xep-XO-chX"/>
@@ -170,6 +174,10 @@
                                                 <constraint firstItem="ann-4m-6cG" firstAttribute="centerY" secondItem="7ly-4d-HhU" secondAttribute="centerY" constant="-0.5" id="vdG-Ts-5ER"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="friendButton" destination="7ly-4d-HhU" id="B8V-cG-ZZE"/>
+                                            <outlet property="friendLabel" destination="ann-4m-6cG" id="S1q-QO-e0w"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -186,6 +194,9 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Friends" id="Www-dv-uvi"/>
+                    <connections>
+                        <outlet property="searchBar" destination="4kv-Ct-SeI" id="CE1-jv-L1V"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a94-BB-fJv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -212,6 +223,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="add" width="42" height="42"/>
+        <image name="check" width="42" height="42"/>
         <image name="checked box" width="28" height="28"/>
         <image name="unchecked box" width="28" height="28"/>
     </resources>

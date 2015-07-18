@@ -10,11 +10,9 @@ import UIKit
 
 class FriendTableViewCell: UITableViewCell {
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
+    @IBOutlet weak var friendButton: UIButton!
+    @IBOutlet weak var friendLabel: UILabel!
+    
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
