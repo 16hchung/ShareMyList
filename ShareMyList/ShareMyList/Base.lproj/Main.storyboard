@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="a5J-kP-sOP">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="a5J-kP-sOP">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Shopping List-->
+        <!--Trader Bros-->
         <scene sceneID="0oJ-pF-Z0D">
             <objects>
                 <viewController id="HDd-Rj-7AF" customClass="ListViewController" customModule="ShareMyList" customModuleProvider="target" sceneMemberID="viewController">
@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="New List Item" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Ujl-yw-f4N">
-                                <rect key="frame" x="16" y="28" width="530" height="30"/>
+                                <rect key="frame" x="16" y="72" width="530" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
@@ -27,7 +27,7 @@
                                 </connections>
                             </textField>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="88" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="3f6-wf-SFC">
-                                <rect key="frame" x="0.0" y="66" width="600" height="485"/>
+                                <rect key="frame" x="0.0" y="110" width="600" height="441"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="List Cell" rowHeight="88" id="i1y-Tx-exn" customClass="ListItemTableViewCell" customModule="ShareMyList" customModuleProvider="target">
@@ -88,7 +88,7 @@
                                 </prototypes>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cTn-24-TKl">
-                                <rect key="frame" x="554" y="28" width="30" height="30"/>
+                                <rect key="frame" x="554" y="72" width="30" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="30" id="yG9-xB-QqK"/>
                                 </constraints>
@@ -119,7 +119,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Shopping List" image="Todo List-50" id="fkL-Cq-on1"/>
+                    <navigationItem key="navigationItem" title="Trader Bros" id="7hv-b7-bGq"/>
                     <connections>
                         <outlet property="addListItemButton" destination="cTn-24-TKl" id="8gI-Wd-dYL"/>
                         <outlet property="addListItemTextField" destination="Ujl-yw-f4N" id="XyR-2h-dSo"/>
@@ -128,7 +128,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tHj-LN-sRn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1331" y="123"/>
+            <point key="canvasLocation" x="2143" y="127"/>
         </scene>
         <!--Friends-->
         <scene sceneID="PHZ-tg-zV6">
@@ -227,13 +227,32 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="HDd-Rj-7AF" kind="relationship" relationship="viewControllers" id="LFj-fq-d3J"/>
+                        <segue destination="3ZK-NZ-W9T" kind="relationship" relationship="viewControllers" id="LFj-fq-d3J"/>
                         <segue destination="cta-ba-FD0" kind="relationship" relationship="viewControllers" id="wZ5-o1-CfM"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kzT-bm-mtq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="507" y="367"/>
+        </scene>
+        <!--Shopping List-->
+        <scene sceneID="m3a-KP-1je">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="3ZK-NZ-W9T" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Shopping List" image="Todo List-50" id="fkL-Cq-on1"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="7sW-Zu-CWw">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="HDd-Rj-7AF" kind="relationship" relationship="rootViewController" id="Dss-6x-Jxt"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5lt-EG-Mbp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1331" y="127"/>
         </scene>
     </scenes>
     <resources>
