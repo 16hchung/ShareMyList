@@ -23,7 +23,7 @@ class FriendTableViewCell: UITableViewCell {
     
     var friend: PFUser? {
         didSet {
-            if friend != nil { friendLabel.text = friend?.username }
+            friendLabel.text = friend?.username ?? ""
         }
     }
     
