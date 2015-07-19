@@ -131,7 +131,7 @@
             </objects>
             <point key="canvasLocation" x="2143" y="127"/>
         </scene>
-        <!--Friends-->
+        <!--Friend View Controller-->
         <scene sceneID="PHZ-tg-zV6">
             <objects>
                 <viewController id="cta-ba-FD0" customClass="FriendViewController" customModule="ShareMyList" customModuleProvider="target" sceneMemberID="viewController">
@@ -208,7 +208,7 @@
                             <constraint firstAttribute="trailing" secondItem="4kv-Ct-SeI" secondAttribute="trailing" id="zSX-gH-20e"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Friends" image="friendsIcon (selected)" id="Www-dv-uvi"/>
+                    <tabBarItem key="tabBarItem" title="" image="friendsIcon (selected)" id="Www-dv-uvi"/>
                     <connections>
                         <outlet property="searchBar" destination="4kv-Ct-SeI" id="CE1-jv-L1V"/>
                         <outlet property="tableView" destination="T1N-Id-SCu" id="Fh3-66-hiN"/>
@@ -237,11 +237,13 @@
             </objects>
             <point key="canvasLocation" x="507" y="367"/>
         </scene>
-        <!--Shopping List-->
+        <!--Navigation Controller-->
         <scene sceneID="m3a-KP-1je">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="3ZK-NZ-W9T" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Shopping List" image="listIcon (selected)" id="fkL-Cq-on1"/>
+                    <tabBarItem key="tabBarItem" title="" image="listIcon (selected)" id="fkL-Cq-on1">
+                        <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
+                    </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="7sW-Zu-CWw">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
