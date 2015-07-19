@@ -17,7 +17,7 @@ class ListViewController: UIViewController {
     
     var myUnboughtItems: [Item] = [] {
         didSet {
-            tableView.reloadData()
+//            tableView.reloadSections(<#sections: NSIndexSet#>, withRowAnimation: <#UITableViewRowAnimation#>)
         }
     }
     
@@ -27,7 +27,11 @@ class ListViewController: UIViewController {
         }
     }
     
-    var friendUnboughtItems: [PFUser : [Item]]?
+    var friendUnboughtItems: [PFUser : [Item]] = [:] {
+        didSet {
+//            tableView.reloadSections(<#sections: NSIndexSet#>, withRowAnimation: <#UITableViewRowAnimation#>)
+        }
+    }
     
     
     override func viewDidLoad() {
@@ -53,16 +57,43 @@ extension ListViewController: UITableViewDataSource {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("List Cell", forIndexPath: indexPath) as! ListItemTableViewCell
         
+        switch indexPath.section {
+        case 0:
+            cell.listItem = myUnboughtItems[indexPath.row]
+        case 1:
+            cell.listItem = myBoughtItems[indexPath.row]
+        default:
+            let friendKey = friendUnboughtItems.keys.array[indexPath.section - 2]
+            let friendItems = friendUnboughtItems[friendKey]!
+            cell.listItem = friendItems[indexPath.row]
+        }
+        
         return cell
     }
     
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        // TODO
+        return nil
+    }
+    
+    // section 0: unbought
+    // section 1: bought
+    // section 2+: friendUnbought
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // TODO: return actual number
-        return myUnboughtItems.count
+        switch section {
+        case 0:
+            return myUnboughtItems.count
+        case 1:
+            return myBoughtItems.count
+        default:
+            let friendKey = friendUnboughtItems.keys.array[section - 2]
+            return friendUnboughtItems[friendKey]?.count ?? 0
+        }
     }
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
+        // 2 sections - 1 for myUnbought, 1 for myBought, however many for friendsUnbought
+        return 2 + friendUnboughtItems.count
     }
 }
 
