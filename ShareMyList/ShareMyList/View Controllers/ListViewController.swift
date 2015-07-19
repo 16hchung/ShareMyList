@@ -33,11 +33,53 @@ class ListViewController: UIViewController {
         }
     }
     
+    // TODO: MAKE THESE NOT HARDCODED VALUES
+    var atLocation: Bool? = false
+    var currentStoreType: String = "grocery store" 
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView.delegate = self
+        tableView.dataSource = self
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        reloadItemsData()
+    }
+    
+    private func reloadItemsData() {
+        reloadUnboughtItems()
+        reloadBoughtItems()
+        if atLocation! { reloadFriendItems() }
+    }
+    
+    private func reloadUnboughtItems() {
+        ParseHelper.unboughtItemsCreatedByUser(PFUser.currentUser()!) { (result: [AnyObject]?, error: NSError?) -> Void in
+            self.myUnboughtItems = result as! [Item]
+        }
+    }
+    
+    private func reloadBoughtItems() {
+        ParseHelper.boughtItemsCreatedByUser(PFUser.currentUser()!) { (result: [AnyObject]?, error: NSError?) -> Void in
+            self.myBoughtItems = result as! [Item]
+        }
+    }
+    
+    private func reloadFriendItems() {
+        var friends = [PFUser]()
+        
+        ParseHelper.getFriendsForUser(PFUser.currentUser()!) { (result: [AnyObject]?, error: NSError?) -> Void in
+            friends = result as? [PFUser] ?? []
+        }
 
-        // Do any additional setup after loading the view.
+        for friend in friends {
+            ParseHelper.filteredItemsCreatedByUser(friend, filter: currentStoreType) { (result: [AnyObject]?, error: NSError?) -> Void in
+                self.friendUnboughtItems[friend] = result as? [Item]
+            }
+        }
     }
 
     
