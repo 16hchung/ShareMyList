@@ -25,12 +25,20 @@ class Item: PFObject, PFSubclassing {
     /// set the category of the list item and save item to parse
     func saveItem(callback: PFBooleanResultBlock) {
         self.category = Item.itemCategoryDictionary[text] ?? "" // set the category
+        self.isBought = false
+        self.creator = PFUser.currentUser()!
         self.saveInBackgroundWithBlock(callback)
     }
     
     func buyItem(callback: PFBooleanResultBlock) {
         self.isBought = true
         self.boughtBy = PFUser.currentUser()
+        self.saveInBackgroundWithBlock(callback)
+    }
+    
+    func toggleBought(isBought: Bool, callback: PFBooleanResultBlock) {
+        self.isBought = isBought
+        if isBought { self.boughtBy = PFUser.currentUser() }
         self.saveInBackgroundWithBlock(callback)
     }
     

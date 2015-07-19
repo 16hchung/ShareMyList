@@ -19,7 +19,7 @@ class ListItemTableViewCell: UITableViewCell {
     var listItem: Item! {
         didSet {
             listItemLabel.text = listItem.text
-            checkBoxButton.selected = listItem.isBought
+            updateIsBought()
             
             if let user = PFUser.currentUser() {
                 if listItem.isBought && user != listItem.boughtBy {
@@ -28,6 +28,17 @@ class ListItemTableViewCell: UITableViewCell {
                     buyerLabel.hidden = true
                 }
             }
+        }
+    }
+    
+    func updateIsBought() {        
+        // change text color
+        if listItem.isBought {
+            listItemLabel.textColor = UIColor.grayColor()
+            checkBoxButton.imageView?.image = UIImage(named: "checked box")
+        } else {
+            listItemLabel.textColor = UIColor.blackColor()
+            checkBoxButton.imageView?.image = UIImage(named: "unchecked box")
         }
     }
 
