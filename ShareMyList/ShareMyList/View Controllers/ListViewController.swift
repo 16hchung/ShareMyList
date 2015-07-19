@@ -48,9 +48,16 @@ class ListViewController: UIViewController {
     }
     
     private func reloadUnboughtItems() {
-        ParseHelper.unboughtItemsCreatedByUser(PFUser.currentUser()!) { (result: [AnyObject]?, error: NSError?) -> Void in
-            self.myUnboughtItems = result as? [Item] ?? []
-            self.tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: UITableViewRowAnimation.Top)
+        if (atLocation) {
+            ParseHelper.filteredItemsCreatedByUser(PFUser.currentUser()!, filter: currentStoreType) { (result: [AnyObject]?, error: NSError?) -> Void in
+                self.myUnboughtItems = result as? [Item] ?? []
+                self.tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: UITableViewRowAnimation.Top)
+            }
+        } else {
+            ParseHelper.unboughtItemsCreatedByUser(PFUser.currentUser()!) { (result: [AnyObject]?, error: NSError?) -> Void in
+                self.myUnboughtItems = result as? [Item] ?? []
+                self.tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: UITableViewRowAnimation.Top)
+            }
         }
     }
     
@@ -208,10 +215,18 @@ extension ListViewController: UITableViewDelegate {
         case 0: // unbought
             let item = myUnboughtItems[indexPath.row]
             item.toggleBought(true) { (success, error) in
-                ParseHelper.unboughtItemsCreatedByUser(PFUser.currentUser()!) { (result: [AnyObject]?, error: NSError?) -> Void in
-                    self.myUnboughtItems = result as? [Item] ?? []
-                    self.deleteItemInSection(0)
+                if (self.atLocation) {
+                    ParseHelper.filteredItemsCreatedByUser(PFUser.currentUser()!, filter: self.currentStoreType) { (result: [AnyObject]?, error: NSError?) -> Void in
+                        self.myUnboughtItems = result as? [Item] ?? []
+                        self.deleteItemInSection(0)
+                    }
+                } else {
+                    ParseHelper.unboughtItemsCreatedByUser(PFUser.currentUser()!) { (result: [AnyObject]?, error: NSError?) -> Void in
+                        self.myUnboughtItems = result as? [Item] ?? []
+                        self.deleteItemInSection(0)
+                    }
                 }
+                
                 ParseHelper.boughtItemsCreatedByUser(PFUser.currentUser()!) { (result: [AnyObject]?, error: NSError?) -> Void in
                     self.myBoughtItems = result as? [Item] ?? []
                     self.insertNewItemInSection(1)
