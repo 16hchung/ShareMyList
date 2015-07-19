@@ -7,16 +7,41 @@
 //
 
 import UIKit
+import Parse
+
+protocol FriendTableViewCellSelectionDelegate: class {
+    func cell(cell: FriendTableViewCell, didSelectFriendUser: PFUser)
+    func cell(cell: FriendTableViewCell, didSelectUnfriendUser: PFUser)
+}
 
 class FriendTableViewCell: UITableViewCell {
 
     @IBOutlet weak var friendButton: UIButton!
     @IBOutlet weak var friendLabel: UILabel!
     
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    weak var delegate: FriendTableViewCellSelectionDelegate?
+    
+    var friend: PFUser? {
+        didSet {
+            if friend != nil { friendLabel.text = friend?.username }
+        }
     }
-
+    
+    var isFriended: Bool = false {
+        didSet {
+            friendButton.selected = isFriended
+        }
+    }
+    
+    @IBAction func friendButtonTapped(sender: AnyObject) {
+        if isFriended {
+            delegate?.cell(self, didSelectUnfriendUser: friend!)
+        } else {
+            delegate?.cell(self, didSelectFriendUser: friend!)
+        }
+        
+        isFriended = !isFriended
+    }
+    
+    
 }
