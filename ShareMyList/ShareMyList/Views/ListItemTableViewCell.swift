@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 class ListItemTableViewCell: UITableViewCell {
 
@@ -18,6 +19,15 @@ class ListItemTableViewCell: UITableViewCell {
     var listItem: Item! {
         didSet {
             listItemLabel.text = listItem.text
+            checkBoxButton.selected = listItem.isBought
+            
+            if let user = PFUser.currentUser() {
+                if listItem.isBought && user != listItem.boughtBy {
+                    
+                } else {
+                    buyerLabel.hidden == true
+                }
+            }
         }
     }
 
