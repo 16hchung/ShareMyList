@@ -6,7 +6,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--My List-->
+        <!--Shopping List-->
         <scene sceneID="0oJ-pF-Z0D">
             <objects>
                 <viewController id="HDd-Rj-7AF" customClass="ListViewController" customModule="ShareMyList" customModuleProvider="target" sceneMemberID="viewController">
@@ -112,7 +112,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <tabBarItem key="tabBarItem" title="My List" id="fkL-Cq-on1"/>
+                    <tabBarItem key="tabBarItem" title="Shopping List" image="Todo List-50" id="fkL-Cq-on1"/>
                     <connections>
                         <outlet property="addListItemButton" destination="cTn-24-TKl" id="8gI-Wd-dYL"/>
                         <outlet property="addListItemTextField" destination="Ujl-yw-f4N" id="XyR-2h-dSo"/>
@@ -123,7 +123,7 @@
             </objects>
             <point key="canvasLocation" x="1331" y="123"/>
         </scene>
-        <!--Friends-->
+        <!--Friend View Controller-->
         <scene sceneID="PHZ-tg-zV6">
             <objects>
                 <viewController id="cta-ba-FD0" customClass="FriendViewController" customModule="ShareMyList" customModuleProvider="target" sceneMemberID="viewController">
@@ -196,7 +196,7 @@
                             <constraint firstAttribute="trailing" secondItem="4kv-Ct-SeI" secondAttribute="trailing" id="zSX-gH-20e"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Friends" id="Www-dv-uvi"/>
+                    <tabBarItem key="tabBarItem" systemItem="contacts" id="Www-dv-uvi"/>
                     <connections>
                         <outlet property="searchBar" destination="4kv-Ct-SeI" id="CE1-jv-L1V"/>
                         <outlet property="tableView" destination="T1N-Id-SCu" id="Fh3-66-hiN"/>
@@ -227,6 +227,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Todo List-50" width="50" height="50"/>
         <image name="add" width="42" height="42"/>
         <image name="check" width="42" height="42"/>
         <image name="checked box" width="28" height="28"/>

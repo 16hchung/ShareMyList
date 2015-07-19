@@ -18,7 +18,6 @@ class ParseHelper {
     static let ParseFriendToUser = "toUser"
     
     static let ParseUserUsername = "username"
-    
     static let ParseItemClass = "Item"
     
     // MARK: friends queries

@@ -23,7 +23,7 @@ class ListItemTableViewCell: UITableViewCell {
             
             if let user = PFUser.currentUser() {
                 if listItem.isBought && user != listItem.boughtBy {
-                    buyerLabel.text = listItem.boughtBy.username
+                    buyerLabel.text = listItem.boughtBy!.username
                 } else {
                     buyerLabel.hidden = true
                 }
