@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Parse
 
 class ListViewController: UIViewController {
 
@@ -14,11 +15,20 @@ class ListViewController: UIViewController {
     @IBOutlet weak var addListItemButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
     
-    var listItems: [Item] = [] {
+    var myUnboughtItems: [Item] = [] {
         didSet {
             tableView.reloadData()
         }
     }
+    
+    var myBoughtItems: [Item] = [] {
+        didSet {
+//            tableView.reloadSections(<#sections: NSIndexSet#>, withRowAnimation: <#UITableViewRowAnimation#>)
+        }
+    }
+    
+    var friendUnboughtItems: [PFUser : [Item]]?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,7 +58,11 @@ extension ListViewController: UITableViewDataSource {
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // TODO: return actual number
-        return 0
+        return myUnboughtItems.count
+    }
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
     }
 }
 
