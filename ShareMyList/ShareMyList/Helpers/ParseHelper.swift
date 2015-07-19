@@ -68,6 +68,15 @@ class ParseHelper {
         return query
     }
     
+    static func searchUsers(searchText: String, completionBlock: PFArrayResultBlock) -> PFQuery {
+        let query = PFUser.query()!.whereKey(ParseUserUsername, matchesRegex: searchText, modifiers: "i")
+        query.whereKey(ParseUserUsername, notEqualTo: PFUser.currentUser()!.username!)
+        query.orderByAscending(ParseUserUsername)
+        query.findObjectsInBackgroundWithBlock(completionBlock)
+        
+        return query
+    }
+    
     // MARK: items queries
     
     static func unboughtItemsCreatedByUser(user: PFUser, completionBlock: PFArrayResultBlock) {
