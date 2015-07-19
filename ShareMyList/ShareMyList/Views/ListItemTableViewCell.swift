@@ -13,6 +13,13 @@ class ListItemTableViewCell: UITableViewCell {
     @IBOutlet weak var listItemLabel: UILabel!
     @IBOutlet weak var checkBoxButton: UIButton!
     
+    @IBOutlet weak var buyerLabel: UILabel!
+    
+    var listItem: Item! {
+        didSet {
+            listItemLabel.text = listItem.text
+        }
+    }
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

@@ -76,6 +76,7 @@
                                             </variation>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="buyerLabel" destination="ApF-5d-RG1" id="2cd-31-lgE"/>
                                             <outlet property="checkBoxButton" destination="wKc-Ck-S50" id="fk6-nJ-UYw"/>
                                             <outlet property="listItemLabel" destination="nDO-up-BUM" id="Qnu-pz-FzZ"/>
                                         </connections>
