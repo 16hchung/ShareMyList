@@ -7,7 +7,69 @@
 //
 
 import Foundation
+import Parse
 
 class ParseHelper {
+    // MARK: Parse data model constants
+    
+    //Friend relation
+    static let ParseFriendClass = "Friend"
+    static let ParseFriendFromUser = "fromUser"
+    static let ParseFriendToUser = "toUser"
+    
+    static let ParseUserUsername = "username"
+    
+    static let ParseItemClass = "Item"
+    
+    // MARK: friends queries
+    
+    static func getFriendsForUser(user: PFUser, completionBlock: PFArrayResultBlock) {
+        let query = PFQuery(className: ParseFriendClass)
+        query.whereKey(ParseFriendFromUser, equalTo: user)
+        query.findObjectsInBackgroundWithBlock(completionBlock)
+    }
+    
+    static func addFriendFromUser(user: PFUser, toUser: PFUser) {
+        let addFriend = PFObject(className: ParseFriendClass)
+        addFriend.setObject(user, forKey: ParseFriendFromUser)
+        addFriend.setObject(toUser, forKey: ParseFriendToUser)
+        
+        addFriend.saveInBackgroundWithBlock(nil)
+    }
+    
+    static func removeFriendFromUser(user: PFUser, toUser: PFUser) {
+        let query = PFQuery(className: ParseFriendClass)
+        query.whereKey(ParseFriendFromUser, equalTo: user)
+        query.whereKey(ParseFriendToUser, equalTo: toUser)
+        
+        query.findObjectsInBackgroundWithBlock {
+            (results: [AnyObject]?, error: NSError?) -> Void in
+            
+            let results = results as? [PFObject] ?? []
+            
+            for friend in results {
+                friend.deleteInBackgroundWithBlock(nil)
+            }
+        }
+    }
+    
+    static func allUsers(completionBlock: PFArrayResultBlock) -> PFQuery {
+        let query = PFUser.query()!
+        // exclude the current user
+        query.whereKey(ParseUserUsername, notEqualTo: PFUser.currentUser()!.username!)
+        query.orderByAscending(ParseUserUsername)
+        
+        query.findObjectsInBackgroundWithBlock(completionBlock)
+        
+        return query
+    }
+}
+
+extension PFObject : Equatable {
     
 }
+
+public func ==(lhs: PFObject, rhs: PFObject) -> Bool {
+    return lhs.objectId == rhs.objectId
+}
+
