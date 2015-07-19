@@ -129,7 +129,7 @@
             </objects>
             <point key="canvasLocation" x="1331" y="123"/>
         </scene>
-        <!--Friend View Controller-->
+        <!--Friends-->
         <scene sceneID="PHZ-tg-zV6">
             <objects>
                 <viewController id="cta-ba-FD0" customClass="FriendViewController" customModule="ShareMyList" customModuleProvider="target" sceneMemberID="viewController">
@@ -205,7 +205,7 @@
                             <constraint firstAttribute="trailing" secondItem="4kv-Ct-SeI" secondAttribute="trailing" id="zSX-gH-20e"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" systemItem="contacts" id="Www-dv-uvi"/>
+                    <tabBarItem key="tabBarItem" title="Friends" image="people" id="Www-dv-uvi"/>
                     <connections>
                         <outlet property="searchBar" destination="4kv-Ct-SeI" id="CE1-jv-L1V"/>
                         <outlet property="tableView" destination="T1N-Id-SCu" id="Fh3-66-hiN"/>
@@ -240,6 +240,7 @@
         <image name="add" width="42" height="42"/>
         <image name="check" width="42" height="42"/>
         <image name="checked box" width="28" height="28"/>
+        <image name="people" width="42" height="42"/>
         <image name="unchecked box" width="28" height="28"/>
     </resources>
 </document>
