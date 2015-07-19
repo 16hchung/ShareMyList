@@ -17,19 +17,19 @@ class ListViewController: UIViewController {
     
     var myUnboughtItems: [Item] = [] {
         didSet {
-//            tableView.reloadSections(<#sections: NSIndexSet#>, withRowAnimation: <#UITableViewRowAnimation#>)
+            tableView.reloadSections(NSIndexSet(index: 0), withRowAnimation: UITableViewRowAnimation.Top)
         }
     }
     
     var myBoughtItems: [Item] = [] {
         didSet {
-//            tableView.reloadSections(<#sections: NSIndexSet#>, withRowAnimation: <#UITableViewRowAnimation#>)
+            tableView.reloadSections(NSIndexSet(index: 1), withRowAnimation: UITableViewRowAnimation.Top)
         }
     }
     
     var friendUnboughtItems: [PFUser : [Item]] = [:] {
         didSet {
-//            tableView.reloadSections(<#sections: NSIndexSet#>, withRowAnimation: <#UITableViewRowAnimation#>)
+            tableView.reloadSections(NSIndexSet(indexesInRange: NSMakeRange(2, friendUnboughtItems.count)), withRowAnimation: UITableViewRowAnimation.Top)
         }
     }
     
@@ -40,6 +40,22 @@ class ListViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
+    
+    // MARK: IBActions
+    @IBAction func addListItem(sender: UIButton) {
+        // load item into parse
+        var addedItem = Item()
+        addedItem.text = addListItemTextField.text
+        addedItem.saveItem()
+        
+        // deal with textField appearance + keyboard stuff
+        addListItemTextField.text = ""
+        addListItemTextField.resignFirstResponder()
+        
+        // edit tableView
+        // TODO: reload unbought data
+    }
+    
     /*
     // MARK: - Navigation
 

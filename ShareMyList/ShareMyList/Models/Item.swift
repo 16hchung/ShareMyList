@@ -23,15 +23,17 @@ class Item: PFObject, PFSubclassing {
     static let itemCategoryDictionary: [String: String] = ["toothpaste" : "drugstore", "apples" : "grocery store"]
     
     /// set the category of the list item and save item to parse
-    func saveItem(callback: PFBooleanResultBlock) {
+    func saveItem() {
         self.category = Item.itemCategoryDictionary[text] ?? "" // set the category
-        self.saveInBackgroundWithBlock(callback)
+        self.isBought = false
+        self.creator = PFUser.currentUser()!
+        self.saveInBackground()
     }
     
-    func buyItem(callback: PFBooleanResultBlock) {
+    func buyItem() {
         self.isBought = true
         self.boughtBy = PFUser.currentUser()
-        self.saveInBackgroundWithBlock(callback)
+        self.saveInBackground()
     }
     
     // MARK: PFSubclassing Protocol
