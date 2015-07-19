@@ -43,10 +43,10 @@
                                                         <constraint firstAttribute="height" constant="32" id="A12-fX-JHz"/>
                                                     </constraints>
                                                     <inset key="contentEdgeInsets" minX="8" minY="8" maxX="8" maxY="8"/>
-                                                    <state key="normal" image="unchecked box">
+                                                    <state key="normal" image="navy circle-2">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
-                                                    <state key="selected" image="checked box"/>
+                                                    <state key="selected" image="checked(deselected)"/>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="List Item" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nDO-up-BUM">
                                                     <rect key="frame" x="48" y="16" width="544" height="21"/>
@@ -57,7 +57,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Buyer" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ApF-5d-RG1">
                                                     <rect key="frame" x="531" y="45" width="45" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.0" green="0.25098040700000002" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="0.71372549019607845" green="0.396078431372549" blue="0.23529411764705882" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -93,6 +93,7 @@
                                     <constraint firstAttribute="width" constant="30" id="yG9-xB-QqK"/>
                                 </constraints>
                                 <state key="normal" title="Add">
+                                    <color key="titleColor" red="0.0" green="0.25098040700000002" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -144,6 +145,7 @@
                         <subviews>
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="4kv-Ct-SeI">
                                 <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                <color key="barTintColor" red="0.0" green="0.25098040700000002" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="57" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="T1N-Id-SCu">
@@ -169,10 +171,10 @@
                                                         <constraint firstAttribute="width" secondItem="7ly-4d-HhU" secondAttribute="height" multiplier="1:1" id="pPc-qY-bTu"/>
                                                     </constraints>
                                                     <inset key="contentEdgeInsets" minX="7" minY="7" maxX="7" maxY="7"/>
-                                                    <state key="normal" image="add">
+                                                    <state key="normal" image="addUser (deselected)">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
-                                                    <state key="selected" image="check"/>
+                                                    <state key="selected" image="addedUser (selected)"/>
                                                     <connections>
                                                         <action selector="friendButtonTapped:" destination="8bP-24-fPW" eventType="touchUpInside" id="Zus-lI-nuw"/>
                                                     </connections>
@@ -206,7 +208,7 @@
                             <constraint firstAttribute="trailing" secondItem="4kv-Ct-SeI" secondAttribute="trailing" id="zSX-gH-20e"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Friends" image="people" id="Www-dv-uvi"/>
+                    <tabBarItem key="tabBarItem" title="Friends" image="friendsIcon (selected)" id="Www-dv-uvi"/>
                     <connections>
                         <outlet property="searchBar" destination="4kv-Ct-SeI" id="CE1-jv-L1V"/>
                         <outlet property="tableView" destination="T1N-Id-SCu" id="Fh3-66-hiN"/>
@@ -239,7 +241,7 @@
         <scene sceneID="m3a-KP-1je">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="3ZK-NZ-W9T" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Shopping List" image="Todo List-50" id="fkL-Cq-on1"/>
+                    <tabBarItem key="tabBarItem" title="Shopping List" image="listIcon (selected)" id="fkL-Cq-on1"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="7sW-Zu-CWw">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -256,11 +258,12 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Todo List-50" width="50" height="50"/>
-        <image name="add" width="42" height="42"/>
-        <image name="check" width="42" height="42"/>
-        <image name="checked box" width="28" height="28"/>
-        <image name="people" width="42" height="42"/>
-        <image name="unchecked box" width="28" height="28"/>
+        <image name="addUser (deselected)" width="50" height="50"/>
+        <image name="addedUser (selected)" width="50" height="50"/>
+        <image name="checked(deselected)" width="32" height="32"/>
+        <image name="friendsIcon (selected)" width="32" height="32"/>
+        <image name="listIcon (selected)" width="32" height="32"/>
+        <image name="navy circle-2" width="47" height="47"/>
     </resources>
+    <color key="tintColor" red="0.0" green="0.25098040700000002" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
 </document>

@@ -105,16 +105,21 @@ class ListViewController: UIViewController {
         var addedItem = Item()
         addedItem.text = addListItemTextField.text
         addedItem.saveItem() { (success, error) in
-            // deal with textField appearance + keyboard stuff
-            self.addListItemTextField.text = ""
-            self.addListItemButton.enabled = false
-            self.addListItemTextField.resignFirstResponder()
             
-            // edit tableView
-            ParseHelper.unboughtItemsCreatedByUser(PFUser.currentUser()!) { (result: [AnyObject]?, error: NSError?) -> Void in
-                self.myUnboughtItems = result as? [Item] ?? []
-                self.insertNewItemInSection(0)
-            }
+//            if success {
+                // deal with textField appearance + keyboard stuff
+                self.addListItemTextField.text = ""
+                self.addListItemButton.enabled = false
+                self.addListItemTextField.resignFirstResponder()
+                
+                // edit tableView
+                ParseHelper.unboughtItemsCreatedByUser(PFUser.currentUser()!) { (result: [AnyObject]?, error: NSError?) -> Void in
+                    self.myUnboughtItems = result as? [Item] ?? []
+                    self.insertNewItemInSection(0)
+                }
+//            } else {
+//                println("i hate the wifi")
+//            }
 
         }
         
