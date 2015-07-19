@@ -28,6 +28,12 @@ class Item: PFObject, PFSubclassing {
         self.saveInBackgroundWithBlock(callback)
     }
     
+    func buyItem(callback: PFBooleanResultBlock) {
+        self.isBought = true
+        self.boughtBy = PFUser.currentUser()
+        self.saveInBackgroundWithBlock(callback)
+    }
+    
     // MARK: PFSubclassing Protocol
     
     static func parseClassName() -> String {

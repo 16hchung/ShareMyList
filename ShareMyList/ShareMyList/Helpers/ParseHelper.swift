@@ -19,6 +19,10 @@ class ParseHelper {
     
     static let ParseUserUsername = "username"
     static let ParseItemClass = "Item"
+    static let ParseItemCreator = "creator"
+    static let ParseItemBoughtBy = "boughtBy"
+    static let ParseItemIsBought = "isBought"
+    static let ParseItemCategory = "category"
     
     // MARK: friends queries
     
@@ -61,6 +65,43 @@ class ParseHelper {
         query.findObjectsInBackgroundWithBlock(completionBlock)
         
         return query
+    }
+    
+    static func searchUsers(searchText: String, completionBlock: PFArrayResultBlock) -> PFQuery {
+        let query = PFUser.query()!.whereKey(ParseUserUsername, matchesRegex: searchText, modifiers: "i")
+        query.whereKey(ParseUserUsername, notEqualTo: PFUser.currentUser()!.username!)
+        query.orderByAscending(ParseUserUsername)
+        query.findObjectsInBackgroundWithBlock(completionBlock)
+        
+        return query
+    }
+    
+    // MARK: items queries
+    
+    static func unboughtItemsCreatedByUser(user: PFUser, completionBlock: PFArrayResultBlock) {
+        let query = PFQuery(className: ParseItemClass)
+        query.whereKey(ParseItemCreator, equalTo: user)
+        query.whereKey(ParseItemIsBought, equalTo: false)
+        query.includeKey(ParseItemBoughtBy)
+        query.findObjectsInBackgroundWithBlock(completionBlock)
+    }
+    
+    static func filteredItemsCreatedByUser(user: PFUser, filter category: String, completionBlock: PFArrayResultBlock) {
+        let query = PFQuery(className: ParseItemClass)
+        query.whereKey(ParseItemCreator, equalTo: user)
+        query.whereKey(ParseItemIsBought, equalTo: false)
+        query.whereKey(ParseItemCategory, equalTo: category)
+        query.includeKey(ParseItemCreator)
+        query.includeKey(ParseItemBoughtBy)
+        query.findObjectsInBackgroundWithBlock(completionBlock)
+    }
+    
+    static func boughtItemsCreatedByUser(user: PFUser, completionBlock: PFArrayResultBlock) {
+        let query = PFQuery(className: ParseItemClass)
+        query.whereKey(ParseItemCreator, equalTo: user)
+        query.whereKey(ParseItemIsBought, equalTo: true)
+        query.includeKey(ParseItemBoughtBy)
+        query.findObjectsInBackgroundWithBlock(completionBlock)
     }
 }
 
