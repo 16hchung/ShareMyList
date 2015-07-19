@@ -20,14 +20,48 @@ class Item: PFObject, PFSubclassing {
     
     // MARK: categories
     
-    static let itemCategoryDictionary: [String: String] = ["toothpaste" : "drugstore", "apples" : "grocery store"]
-    
     /// set the category of the list item and save item to parse
     func saveItem(callback: PFBooleanResultBlock) {
-        self.category = Item.itemCategoryDictionary[text] ?? "" // set the category
+        findCategory()
         self.isBought = false
         self.creator = PFUser.currentUser()!
         self.saveInBackgroundWithBlock(callback)
+    }
+    
+    private func findCategory() {
+        let insertableText = text.stringByReplacingOccurrencesOfString(" ", withString: "+")
+        let urlPath = "https://api.idolondemand.com/1/api/sync/querytextindex/v1?text=\(insertableText)&indexes=store-association&apikey=a6703c28-6b7c-409a-8b34-b16ad72a5e17"
+        let url = NSURL(string: urlPath)
+        let session = NSURLSession.sharedSession()
+        let task = session.dataTaskWithURL(url!, completionHandler: {data, response, error -> Void in
+            if(error != nil) {
+                // If there is an error in the web request, print it to the console
+                println(error.localizedDescription)
+            }
+            
+            // no error...
+            var err: NSError?
+            if let jsonResult = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers, error: &err) as? NSDictionary {
+                if(err != nil) {
+                    // If there is an error parsing JSON, print it to the console
+                    println("JSON Error \(err!.localizedDescription)")
+                }
+                if let docs = jsonResult["documents"] as? NSArray {
+                    let category = docs[0]["title"] as? String
+                    self.category = category!
+                    println(category!)
+                    self.saveInBackground()
+//                    dispatch_async(dispatch_get_main_queue(), {
+////                        self.tableData = results
+////                        self.appsTableView!.reloadData()
+//                    })
+                }
+            }
+        })
+        
+        // The task is just an object with all these properties set
+        // In order to actually make the web request, we need to "resume"
+        task.resume()
     }
     
     func buyItem(callback: PFBooleanResultBlock) {

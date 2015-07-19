@@ -20,8 +20,8 @@ class ListViewController: UIViewController {
     var friendUnboughtItems: [PFUser : [Item]] = [:]
     
     // TODO: MAKE THESE NOT HARDCODED VALUES
-    var atLocation: Bool? = false
-    var currentStoreType: String = "grocery store" 
+    var atLocation: Bool? = true
+    var currentStoreType: String = "grocery"
     
     
     override func viewDidLoad() {
@@ -60,7 +60,8 @@ class ListViewController: UIViewController {
         var friends = [PFUser]()
         
         ParseHelper.getFriendsForUser(PFUser.currentUser()!) { (result: [AnyObject]?, error: NSError?) -> Void in
-            friends = result as? [PFUser] ?? []
+            let results = result as? [PFObject] ?? []
+            friends = results.map { return $0[ParseHelper.ParseFriendToUser] }
         }
 
         for i in 0..<friends.count {
