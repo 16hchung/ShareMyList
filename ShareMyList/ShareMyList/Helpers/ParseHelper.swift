@@ -24,6 +24,7 @@ class ParseHelper {
     static let ParseItemIsBought = "isBought"
     static let ParseItemCategory = "category"
     static let ParseItemCreatedAt = "createdAt"
+    static let ParseItemUpdatedAt = "updatedAt"
     
     // MARK: friends queries
     
@@ -103,7 +104,7 @@ class ParseHelper {
         let query = PFQuery(className: ParseItemClass)
         query.whereKey(ParseItemCreator, equalTo: user)
         query.whereKey(ParseItemIsBought, equalTo: true)
-        query.orderByDescending(ParseItemCreatedAt)
+        query.orderByDescending(ParseItemUpdatedAt)
         query.includeKey(ParseItemBoughtBy)
         query.findObjectsInBackgroundWithBlock(completionBlock)
     }
