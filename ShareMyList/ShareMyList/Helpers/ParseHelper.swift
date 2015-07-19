@@ -23,6 +23,7 @@ class ParseHelper {
     static let ParseItemBoughtBy = "boughtBy"
     static let ParseItemIsBought = "isBought"
     static let ParseItemCategory = "category"
+    static let ParseItemCreatedAt = "createdAt"
     
     // MARK: friends queries
     
@@ -82,6 +83,7 @@ class ParseHelper {
         let query = PFQuery(className: ParseItemClass)
         query.whereKey(ParseItemCreator, equalTo: user)
         query.whereKey(ParseItemIsBought, equalTo: false)
+        query.orderByDescending(ParseItemCreatedAt)
         query.includeKey(ParseItemBoughtBy)
         query.findObjectsInBackgroundWithBlock(completionBlock)
     }
@@ -91,6 +93,7 @@ class ParseHelper {
         query.whereKey(ParseItemCreator, equalTo: user)
         query.whereKey(ParseItemIsBought, equalTo: false)
         query.whereKey(ParseItemCategory, equalTo: category)
+        query.orderByDescending(ParseItemCreatedAt)
         query.includeKey(ParseItemCreator)
         query.includeKey(ParseItemBoughtBy)
         query.findObjectsInBackgroundWithBlock(completionBlock)
@@ -100,6 +103,7 @@ class ParseHelper {
         let query = PFQuery(className: ParseItemClass)
         query.whereKey(ParseItemCreator, equalTo: user)
         query.whereKey(ParseItemIsBought, equalTo: true)
+        query.orderByDescending(ParseItemCreatedAt)
         query.includeKey(ParseItemBoughtBy)
         query.findObjectsInBackgroundWithBlock(completionBlock)
     }
