@@ -71,9 +71,9 @@ class ListViewController: UIViewController {
     private func reloadFriendItems() {
         var friends = [PFUser]()
         
-        ParseHelper.getFriendsForUser(PFUser.currentUser()!) { (result: [AnyObject]?, error: NSError?) -> Void in
+        ParseHelper.getFriendsToUser(PFUser.currentUser()!) { (result: [AnyObject]?, error: NSError?) -> Void in
             let results = result as? [PFObject] ?? []
-            friends = results.map { $0.objectForKey(ParseHelper.ParseFriendToUser) as! PFUser }
+            friends = results.map { $0.objectForKey(ParseHelper.ParseFriendFromUser) as! PFUser }
             
             for i in 0..<friends.count {
                 let friend = friends[i]
@@ -179,13 +179,22 @@ extension ListViewController: UITableViewDataSource {
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
         case 0:
-            return "To Buy"
+            if myUnboughtItems.count > 0 {
+                return "To Buy"
+            }
         case 1:
-            return "Bought"
+            if myBoughtItems.count > 0 {
+                return "Bought"
+            }
         default:
             let friendKey = friendUnboughtItems.keys.array[section - 2]
-            return friendKey.username
+            if friendUnboughtItems[friendKey]?.count > 0 {
+                return friendKey.username
+            }
         }
+        
+        //no header if empty section
+        return nil
     }
     
     // section 0: unbought

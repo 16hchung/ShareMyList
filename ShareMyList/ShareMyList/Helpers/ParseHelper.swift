@@ -37,6 +37,14 @@ class ParseHelper {
         query.findObjectsInBackgroundWithBlock(completionBlock)
     }
     
+    static func getFriendsToUser(user: PFUser, completionBlock: PFArrayResultBlock) {
+        let query = PFQuery(className: ParseFriendClass)
+        query.whereKey(ParseFriendToUser, equalTo: user)
+        query.includeKey(ParseFriendFromUser)
+        
+        query.findObjectsInBackgroundWithBlock(completionBlock)
+    }
+    
     static func addFriendFromUser(user: PFUser, toUser: PFUser) {
         let addFriend = PFObject(className: ParseFriendClass)
         addFriend.setObject(user, forKey: ParseFriendFromUser)
