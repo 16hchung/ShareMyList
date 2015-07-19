@@ -95,7 +95,7 @@ class ListViewController: UIViewController {
         addListItemTextField.resignFirstResponder()
         
         // edit tableView
-        // TODO: reload unbought data
+        reloadUnboughtItems()
     }
     
     /*
