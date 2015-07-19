@@ -29,6 +29,11 @@ class ListViewController: UIViewController {
         
         tableView.delegate = self
         tableView.dataSource = self
+        
+        tableView.estimatedRowHeight = 88
+        tableView.rowHeight = UITableViewAutomaticDimension
+        
+        addListItemButton.enabled = false
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -78,6 +83,16 @@ class ListViewController: UIViewController {
 
     
     // MARK: IBActions
+    
+    
+    @IBAction func editedItemToAdd(sender: UITextField) {
+        if addListItemTextField.text != "" {
+            addListItemButton.enabled = true
+        } else {
+            addListItemButton.enabled = false
+        }
+    }
+    
     @IBAction func addListItem(sender: UIButton) {
         // load item into parse
         var addedItem = Item()
@@ -85,6 +100,7 @@ class ListViewController: UIViewController {
         addedItem.saveItem() { (success, error) in
             // deal with textField appearance + keyboard stuff
             self.addListItemTextField.text = ""
+            self.addListItemButton.enabled = false
             self.addListItemTextField.resignFirstResponder()
             
             // edit tableView
