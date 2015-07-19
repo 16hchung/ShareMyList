@@ -12,8 +12,13 @@ class ListViewController: UIViewController {
 
     @IBOutlet weak var addListItemTextField: UITextField!
     @IBOutlet weak var addListItemButton: UIButton!
+    @IBOutlet weak var tableView: UITableView!
     
-    
+    var listItems: [Item] = [] {
+        didSet {
+            tableView.reloadData()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()

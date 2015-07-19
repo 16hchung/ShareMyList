@@ -115,6 +115,7 @@
                     <connections>
                         <outlet property="addListItemButton" destination="cTn-24-TKl" id="8gI-Wd-dYL"/>
                         <outlet property="addListItemTextField" destination="Ujl-yw-f4N" id="XyR-2h-dSo"/>
+                        <outlet property="tableView" destination="3f6-wf-SFC" id="iXb-WF-ly2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tHj-LN-sRn" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -197,6 +198,7 @@
                     <tabBarItem key="tabBarItem" title="Friends" id="Www-dv-uvi"/>
                     <connections>
                         <outlet property="searchBar" destination="4kv-Ct-SeI" id="CE1-jv-L1V"/>
+                        <outlet property="tableView" destination="T1N-Id-SCu" id="Fh3-66-hiN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a94-BB-fJv" userLabel="First Responder" sceneMemberID="firstResponder"/>
