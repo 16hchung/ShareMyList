@@ -20,7 +20,7 @@ class ListViewController: UIViewController {
     var friendUnboughtItems: [PFUser : [Item]] = [:]
     
     // TODO: MAKE THESE NOT HARDCODED VALUES
-    var atLocation: Bool? = true
+    var atLocation: Bool = true
     var currentStoreType: String = "grocery"
     
     
@@ -39,7 +39,7 @@ class ListViewController: UIViewController {
     private func reloadItemsData() {
         reloadUnboughtItems()
         reloadBoughtItems()
-        if atLocation! { reloadFriendItems() }
+        if atLocation { reloadFriendItems() }
     }
     
     private func reloadUnboughtItems() {
@@ -61,14 +61,17 @@ class ListViewController: UIViewController {
         
         ParseHelper.getFriendsForUser(PFUser.currentUser()!) { (result: [AnyObject]?, error: NSError?) -> Void in
             let results = result as? [PFObject] ?? []
-            friends = results.map { return $0[ParseHelper.ParseFriendToUser] }
-        }
-
-        for i in 0..<friends.count {
-            let friend = friends[i]
-            ParseHelper.filteredItemsCreatedByUser(friend, filter: currentStoreType) { (result: [AnyObject]?, error: NSError?) -> Void in
-                self.friendUnboughtItems[friend] = result as? [Item]
-                self.tableView.reloadSections(NSIndexSet(index: i + 2), withRowAnimation: UITableViewRowAnimation.Top)
+            friends = results.map { $0.objectForKey(ParseHelper.ParseFriendToUser) as! PFUser }
+            
+            for i in 0..<friends.count {
+                let friend = friends[i]
+                println(friend)
+                ParseHelper.filteredItemsCreatedByUser(friend, filter: self.currentStoreType) { (result: [AnyObject]?, error: NSError?) -> Void in
+                    self.friendUnboughtItems[friend] = result as? [Item]
+//                    self.tableView.reloadSections(NSIndexSet(index: i + 2), withRowAnimation: UITableViewRowAnimation.Top)
+//                    println(result)
+                    self.tableView.reloadData()
+                }
             }
         }
     }
@@ -209,14 +212,16 @@ extension ListViewController: UITableViewDelegate {
                 var friends = [PFUser]()
                 
                 ParseHelper.getFriendsForUser(PFUser.currentUser()!) { (result: [AnyObject]?, error: NSError?) -> Void in
-                    friends = result as? [PFUser] ?? []
-                }
-                
-                for i in 0..<friends.count {
-                    let friend = friends[i]
-                    ParseHelper.filteredItemsCreatedByUser(friend, filter: self.currentStoreType) { (result: [AnyObject]?, error: NSError?) -> Void in
-                        self.friendUnboughtItems[friend] = result as? [Item]
-                        self.deleteItemInSection(i + 2)
+                    let results = result as? [PFObject] ?? []
+                    friends = results.map { $0.objectForKey(ParseHelper.ParseFriendToUser) as! PFUser }
+                    
+                    for i in 0..<friends.count {
+                        let friend = friends[i]
+                        ParseHelper.filteredItemsCreatedByUser(friend, filter: self.currentStoreType) { (result: [AnyObject]?, error: NSError?) -> Void in
+                            self.friendUnboughtItems[friend] = result as? [Item]
+                            self.deleteItemInSection(i + 2)
+                            self.tableView.reloadData()
+                        }
                     }
                 }
             }
