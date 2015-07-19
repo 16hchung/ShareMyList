@@ -35,10 +35,14 @@ class ListItemTableViewCell: UITableViewCell {
         // change text color
         if listItem.isBought {
             listItemLabel.textColor = UIColor.grayColor()
-            checkBoxButton.imageView?.image = UIImage(named: "checked box")
+            checkBoxButton.imageView?.image = UIImage(named: "checked(deselected)")
+//            checkBoxButton.selected = true
+            checkBoxButton.hidden = true
         } else {
             listItemLabel.textColor = UIColor.blackColor()
-            checkBoxButton.imageView?.image = UIImage(named: "unchecked box")
+            checkBoxButton.imageView?.image = UIImage(named: "navy circle-2")
+
+//            checkBoxButton.selected = false
         }
     }
 
