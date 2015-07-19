@@ -13,7 +13,7 @@ class Item: PFObject, PFSubclassing {
     // MARK: properties from Parse
     
     @NSManaged var creator: PFUser
-    @NSManaged var boughtBy: PFUser
+    @NSManaged var boughtBy: PFUser?
     @NSManaged var text: String
     @NSManaged var category: String
     @NSManaged var isBought: Bool
