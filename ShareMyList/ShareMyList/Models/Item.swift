@@ -18,6 +18,16 @@ class Item: PFObject, PFSubclassing {
     @NSManaged var category: String
     @NSManaged var isBought: Bool
     
+    // MARK: categories
+    
+    static let itemCategoryDictionary: [String: String] = ["toothpaste" : "drugstore", "apples" : "grocery store"]
+    
+    /// set the category of the list item and save item to parse
+    func saveItem(callback: PFBooleanResultBlock) {
+        self.category = Item.itemCategoryDictionary[text] ?? "" // set the category
+        self.saveInBackgroundWithBlock(callback)
+    }
+    
     // MARK: PFSubclassing Protocol
     
     static func parseClassName() -> String {

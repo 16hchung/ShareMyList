@@ -19,11 +19,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
+        // initialize Parse
         Parse.enableLocalDatastore()
         Parse.setApplicationId("SzV0JFZHfZkez8OBMhWj3BnIn52DrWsRN9V9XiAk", clientKey: "aH4MoGlunP5ZEvPKEPhCKta3XPQHT4razXfd7L3N")
+//        PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
         
-        PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
-        // Override point for customization after application launch.
+        PFUser.logInWithUsername("Steve", password: "steve")
+        
+        if let user = PFUser.currentUser() {
+            println("yay")
+        } else {
+            println(":(")
+        }
+        
         return true
     }
 
