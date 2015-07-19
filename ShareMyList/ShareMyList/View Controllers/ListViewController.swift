@@ -20,8 +20,8 @@ class ListViewController: UIViewController {
     var friendUnboughtItems: [PFUser : [Item]] = [:]
     
     // TODO: MAKE THESE NOT HARDCODED VALUES
-    var atLocation: Bool = true
-    var currentStoreType: String = "grocery"
+    var atLocation: Bool = false
+    var currentStoreType: String = "electronics"
     
     
     override func viewDidLoad() {

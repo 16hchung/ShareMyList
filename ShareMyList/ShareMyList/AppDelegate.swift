@@ -24,7 +24,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Parse.setApplicationId("SzV0JFZHfZkez8OBMhWj3BnIn52DrWsRN9V9XiAk", clientKey: "aH4MoGlunP5ZEvPKEPhCKta3XPQHT4razXfd7L3N")
 //        PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
         
-        PFUser.logInWithUsername("Bill", password: "bill")
+
+        PFUser.logInWithUsername("Claire", password: "claire")
         
         if let user = PFUser.currentUser() {
             println("yay")
