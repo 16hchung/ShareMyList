@@ -23,7 +23,7 @@ class ListItemTableViewCell: UITableViewCell {
             
             if let user = PFUser.currentUser() {
                 if listItem.isBought && user != listItem.boughtBy {
-                    buyerLabel.text = listItem.boughtBy!.username
+                    buyerLabel.text = "bought by \(listItem.boughtBy!.username!)" ?? "bought by me!"
                 } else {
                     buyerLabel.removeFromSuperview()
                 }

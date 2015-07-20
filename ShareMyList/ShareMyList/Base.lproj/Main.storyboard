@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="a5J-kP-sOP">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="a5J-kP-sOP">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Trader Bros-->
+        <!--Claire's List-->
         <scene sceneID="0oJ-pF-Z0D">
             <objects>
                 <viewController id="HDd-Rj-7AF" customClass="ListViewController" customModule="ShareMyList" customModuleProvider="target" sceneMemberID="viewController">
@@ -120,7 +120,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" title="Trader Bros" id="7hv-b7-bGq"/>
+                    <navigationItem key="navigationItem" title="Claire's List" id="7hv-b7-bGq"/>
                     <connections>
                         <outlet property="addListItemButton" destination="cTn-24-TKl" id="8gI-Wd-dYL"/>
                         <outlet property="addListItemTextField" destination="Ujl-yw-f4N" id="XyR-2h-dSo"/>
